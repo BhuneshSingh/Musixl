@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Musixl</string>
+    <string name="name">Song Name</string>
+    <string name="artist">Artist Name</string>
 </resources>
