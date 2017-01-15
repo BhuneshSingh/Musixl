@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
-    android:background="@color/cardview_light_background"
+    app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="@dimen/activity_vertical_margin"
     app:cardElevation="@dimen/activity_vertical_margin">
 
@@ -29,7 +29,10 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/imageView"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@string/name"
+            android:textColor="@color/primary_text"
             android:textSize="20sp"/>
 
         <TextView
@@ -38,8 +41,11 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/songName"
             android:layout_below="@+id/songName"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:paddingTop="@dimen/top_padding"
             android:text="@string/artist"
+            android:textColor="@color/primary_text"
             android:textSize="15sp"/>
 
     </RelativeLayout>

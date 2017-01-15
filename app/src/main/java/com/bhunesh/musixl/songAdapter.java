@@ -1,7 +1,8 @@
 package com.bhunesh.musixl;
 
+import android.content.ContentUris;
 import android.content.Context;
-import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class songAdapter extends RecyclerView.Adapter<View_Holder> {
 
     Context context;
+    int lastPosition = -1;
     private ArrayList<Song> songs;
 
 
@@ -39,8 +41,9 @@ public class songAdapter extends RecyclerView.Adapter<View_Holder> {
 
         holder.title.setText(songs.get(position).title);
         holder.artist.setText(songs.get(position).artist);
-        holder.albumArt.setImageBitmap(BitmapFactory.decodeFile(String.valueOf(songs.get(position).albumArt)));
-        animate(holder);
+        Uri uri = ContentUris.withAppendedId(Uri.parse("content://media/external/audio/albumart"), songs.get(position).albumArt);
+        //holder.albumArt.setImageBitmap(BitmapFactory.decodeFile(String.valueOf(songs.get(position).albumArt)));
+        //animate(holder);
     }
 
     @Override
@@ -52,5 +55,6 @@ public class songAdapter extends RecyclerView.Adapter<View_Holder> {
         final Animation animAnticipateOvershoot = AnimationUtils.loadAnimation(context, R.anim.bounce_interpolator);
         viewHolder.itemView.setAnimation(animAnticipateOvershoot);
     }
+
 }
 

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
+
 public class MainActivity extends AppCompatActivity {
     public int albumArt;
     private ArrayList<Song> songList;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         songView = (RecyclerView) findViewById(R.id.songList);
+
+
         songList = new ArrayList<Song>();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         songAdapter adapter = new songAdapter(songList, getApplication());
         songView.setAdapter(adapter);
         songView.setLayoutManager(new LinearLayoutManager(this));
+        songView.setAdapter(new AlphaInAnimationAdapter(adapter));
 
 
     }
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             int titleColumn = musicCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE);
             int idColumn = musicCursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID);
             int artistColumn = musicCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST);
-            int albumArtColumn = musicCursor.getColumnIndexOrThrow(MediaStore.Audio.AlbumColumns.ALBUM_ART);
+            int albumArtColumn = musicCursor.getColumnIndexOrThrow(MediaStore.Audio.Albums._ID);
 
             do {
                 long Id = musicCursor.getLong(idColumn);
